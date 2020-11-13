@@ -44,8 +44,8 @@ Server Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.0", GitCom
 > 为了访问海外的资源，阿里云提供了一系列基础设施，请按照如下参数进行配置。其中常见参数:
 > * --driver=***： 从1.5.0版本开始，Minikube缺省使用本地最好的驱动来创建Kubernetes本地环境，测试过的版本docker，kvm
 > * --image-mirror-country cn： 将缺省利用`registry.cn-hangzhou.aliyuncs.com/google_containers`作为安装Kubernetes的容器镜像仓库 （阿里云版本可选）
-> * --iso-url=***： 利用阿里云的镜像地址下载相应的.iso 文件（阿里云版本可选）
-> * --registry-mirror=***： 为了拉取Docker Hub镜像，需要为 Docker daemon 配置镜像加速，参考阿里云镜像服务
+> * --iso-url=*： 利用阿里云的镜像地址下载相应的.iso 文件（阿里云版本可选）
+> * --registry-mirror=*： 为了拉取Docker Hub镜像（https://registry.docker-cn.com），需要为 Docker daemon 配置镜像加速，参考阿里云镜像服务
 > * --cpus=2：为minikube虚拟机分配CPU核数
 > * --memory=2048mb：为minikube虚拟机分配内存数
 > * --kubernetes-version=***：minikube虚拟机将使用的kubernetes版本
