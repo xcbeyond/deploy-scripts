@@ -1,0 +1,37 @@
+# yapi
+apiVersion: v1
+kind: Service
+metadata:
+  name: yapi
+  namespace: yapi
+spec:
+  ports:
+  - name: yapi
+    port: 3000
+    nodePort: 30300
+    targetPort: 3000
+  type: NodePort
+  selector:
+    app: yapi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yapi
+  namespace: yapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: yapi
+  template:
+    metadata:
+      labels:
+        app: yapi
+    spec:
+      containers:
+      - name: yapi
+        image: xcbeyond/yapi:1.9.2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000

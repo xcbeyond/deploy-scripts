@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  mongodb :
+    image: mongo:4.4.6
+    # volumes:
+    #     - /yapi/mongo/db:/data/db
+    #     - /yapi/mongo/log:/var/log/mongodb
+    ports:
+      - 27017:27017
+    # command: --auth
+
+  yaip:
+    image: xcbeyond/yapi:1.9.2
+    ports:
+      - 3000:3000
+    depends_on: 
+      - mongodb
