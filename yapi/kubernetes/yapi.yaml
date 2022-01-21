@@ -1,48 +1,40 @@
-# mongodb
+# yapi
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb
+  name: yapi
   namespace: yapi
 spec:
   ports:
-  - port: 27017
-    name: http
+  - name: yapi
+    port: 3000
+    nodePort: 30300
+    targetPort: 3000
+  type: NodePort
   selector:
-    app: mongodb
+    app: yapi
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongodb
+  name: yapi
   namespace: yapi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongodb
+      app: yapi
   template:
     metadata:
       labels:
-        app: mongodb
+        app: yapi
     spec:
       containers:
-      - name: mongodb
-        image: mongo:4.4.6
-        imagePullPolicy: IfNotPresent
+      - name: yapi
+        image: xcbeyond/yapi:1.9.2
+        imagePullPolicy: Always #IfNotPresent
         ports:
-        - containerPort: 27017
-      #   volumeMounts:
-      #     - name: nfs-yapi-mongodb-data
-      #       mountPath: "/data/db"
-      #     - name: nfs-yapi-mongodb-log
-      #       mountPath: "/var/log/mongodb"
-      # volumes:
-      #   - name: nfs-yapi-mongodb-data
-      #     nfs:
-      #       path: /data/volumes/yapi/data/mongodb
-      #       server: 192.168.1.100
-      #   - name: nfs-yapi-mongodb-log
-      #     nfs:
-      #       path: /data/volumes/yapi/logs/mongodb
-      #       server: 192.168.1.100
+        - containerPort: 3000
+        args:
+          # 启动参数, install: 首次安装时使用，start：后续启动时使用
+          - "start"

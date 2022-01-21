@@ -14,6 +14,7 @@ COPY config.json /yapi
 # https://github.com/YMFE/yapi/issues/2231
 COPY commons.js /yapi/vendors/server/utils
 COPY run.sh /yapi
+RUN chmod 777 /yapi/run.sh
 
 EXPOSE 3000
 ENTRYPOINT ["/yapi/run.sh"]

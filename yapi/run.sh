@@ -1,9 +1,17 @@
 #!/bin/sh
 
-# install,init by config.json
 cd /yapi/vendors
-npm run install-server
-# starting
-node server/app.js
+
+if [ $1 == "start" ]; then
+   echo "starting..."
+   npm run start
+elif [ $1 == "install" ]; then
+   echo "install..."
+   npm run install-server
+   echo "starting..."
+   npm run start
+else
+   echo "unkonwn args: " $1
+fi
 
 exit 0
