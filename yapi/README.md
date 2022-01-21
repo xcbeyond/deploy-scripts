@@ -65,24 +65,27 @@
 
 ### docker-compose 部署
 
-将 docker-compose 文件 [/yaip/docker-compose.yaml](./docker-compose.yaml) 上传至部署环境上，执行 docker-compose 命令 `docker-compose up -d` 完成部署即可。
+将 docker-compose 文件 [/yaip/docker-compose/docker-compose.yaml](./docker-compose/docker-compose.yaml) 上传至部署环境上，执行 docker-compose 命令 `docker-compose up -d` 完成部署即可。（卸载：`docker-compose down`）
 
 浏览器访问地址 `http://<部署环境IP>:3000`，可用超级管理员登录或直接注册新账号。
 
-> 超级管理员：`admin@admin.com`、`ymfe.org`，登录后建议修改密码。
+> 超级管理员：`admin@admin.com`、`123456`，登录后建议修改密码。
+
+> 更多 docker-compose 相关命令可参考：[Docker Compose常用命令](http://c.biancheng.net/view/3168.html)
+
+**注意：部署、验证后，建议修改 `docker-compose.yaml` 文件，将启动参数修改为 `start`，否则 yapi 重启后无法正常运行。**
 
 ### Kubernetes 部署
 
-将 [Kubernetes 部署资源文件](./kubernetes/)上传至部署环境上，分别通过命令 `kubectl apply -f` 执行文件 [mongodb.yaml](./kubernetes/mongodb.yaml) 和 [yapi.yaml](./kubernetes/yapi.yaml) 完成部署即可。
+将 [Kubernetes 部署资源文件](./kubernetes/)上传至部署环境上，通过命令 `kubectl apply -f` 执行文件 [mongodb.yaml](./kubernetes/mongodb.yaml) 和 [yapi.yaml](./kubernetes/yapi.yaml) 完成部署即可。
 
 ```sh
 kubectl apply -f mongodb.yaml
-# 等待 mongodb 启动成功后，再执行 yapi
 kubectl apply -f yapi.yaml
 ```
 
-**注：先启动 mongodb、再启动 yapi。**
-
 浏览器访问地址 `http://<部署环境IP>:30300`，可用超级管理员登录或直接注册新账号。
 
-> 超级管理员：`admin@admin.com`、`ymfe.org`，登录后建议修改密码。
+> 超级管理员：`admin@admin.com`、`123456`，登录后建议修改密码。
+
+**注意：部署、验证后，建议修改 `yapi.yaml` 文件，将启动参数修改为 `start`，否则 yapi Pod 重启后无法正常运行。**

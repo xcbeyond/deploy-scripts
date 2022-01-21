@@ -14,5 +14,8 @@ services:
     image: xcbeyond/yapi:1.9.2
     ports:
       - 3000:3000
+    command:
+      # 启动参数, install: 首次安装时使用，start：后续启动时使用 
+      - "install"
     depends_on: 
       - mongodb

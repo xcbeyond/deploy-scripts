@@ -32,9 +32,9 @@ spec:
       containers:
       - name: yapi
         image: xcbeyond/yapi:1.9.2
-        imagePullPolicy: Always #IfNotPresent
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
         args:
           # 启动参数, install: 首次安装时使用，start：后续启动时使用
-          - "start"
+          - "install"
