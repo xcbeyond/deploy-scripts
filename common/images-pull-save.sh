@@ -2,7 +2,7 @@
 
 n=0
 
-for line in $(cat images.txt)
+for line in $(cat images.list)
 do
    images[$n]=$line
    ((n+=1))
